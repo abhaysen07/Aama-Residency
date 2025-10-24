@@ -1,0 +1,257 @@
+/* ============================================================
+   AAMA RESIDENCY WEBSITE STYLESHEET — fully documented
+   Author: Abhishek Kumar
+   Date Updated: 14 October 2025
+   Purpose: Full site styles + unified global .global-book-btn
+   ============================================================ */
+
+/* =========================
+   1. GLOBAL BODY SETTINGS
+   ========================= */
+body {
+    text-align: center;                       /* default center alignment for headings/layout */
+    background-color: #c4ab7b;                /* warm cream page background color */
+    margin: 0;                                /* remove default browser margin */
+    font-family: Arial, sans-serif;           /* primary font family */
+}
+
+/* =========================
+   2. NAVBAR / HEADER
+   ========================= */
+.navbar {
+    display: flex;                            /* use flex for nav layout */
+    justify-content: space-between;           /* space-between to place items left/right */
+    align-items: center;                      /* vertically center */
+    background-color: rgb(109, 192, 175);     /* navbar background */
+    padding: 15px 0;                          /* vertical padding */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);    /* subtle shadow */
+    position: sticky;                         /* sticks to top when scrolling */
+    top: 0;
+    z-index: 1000;                            /* sit above other content */
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover { color: #007bff; }
+
+/* =========================
+   3. LOGO
+   ========================= */
+.logo-container { text-align: center; margin: 0; padding: 10px; }
+.hotel-logo {
+    width: 250px; height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+.hotel-logo:hover { transform: scale(1.05); }
+
+/* =========================
+   4. DATE/TIME DISPLAY
+   ========================= */
+#datetime {
+    font-size: 14px; font-weight: 500; color: #083;
+    white-space: nowrap; margin-right: 24px;
+}
+@media (max-width: 780px) { #datetime { display: none; } }
+
+/* =========================
+   5. MAIN / ABOUT SECTIONS
+   ========================= */
+main { padding: 20px; max-width: 1200px; margin: auto; text-align: center; }
+.about { text-align: center; margin: 10px; }
+
+/* =========================
+   6. ROOMS & SERVICES
+   ========================= */
+.rooms-services { text-align: center; padding: 28px 16px; margin: 10px auto; max-width: 1100px; }
+
+.room-card {
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    margin: 18px auto; transition: transform .18s ease, box-shadow .18s ease;
+}
+.room-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,0.16); }
+
+.room-card-header h3 { margin: 0; font-size: 1.35rem; letter-spacing: 0.2px; }
+.room-card-header .subtle { margin: 6px 0 12px; font-size: 0.95rem; color: rgba(0,0,0,0.6); }
+
+.room-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch;
+    margin: 10px 0 18px;
+}
+
+.room-type {
+    background: #fff; border-radius: 10px; padding: 14px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08); text-align: left;
+    transition: transform .18s ease, box-shadow .18s ease;
+    min-height: 160px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.room-type:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+
+.room-type h4 { margin: 0 0 8px; font-size: 1.05rem; color: #2b2b2b; }
+.room-desc { margin: 0 0 12px; line-height: 1.35; color: #333; font-size: 0.95rem; }
+.room-meta { margin: 0; font-size: 0.88rem; color: #006644; font-weight: 600; }
+
+.services-brief { margin-top: 12px; text-align: left; padding: 10px 8px; border-top: 1px dashed rgba(0,0,0,0.06); }
+.services-brief h4 { margin: 8px 0; font-size: 1rem; }
+.services-brief ul { margin: 6px 0 0; padding-left: 20px; }
+.final-note { margin-top: 12px; font-weight: 600; }
+
+/* =========================
+   7. FOOTER
+   ========================= */
+footer { background-color: brown; text-align: center; padding: 10px 0; color: #fff; font-weight: 500; }
+
+/* =========================
+   8. RESPONSIVE BREAKPOINTS
+   ========================= */
+@media (max-width: 900px) { .room-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .room-grid { grid-template-columns: 1fr; } .room-card { padding: 16px; } .room-type { min-height: auto; } }
+
+/* =========================
+   9. GLOBAL BOOK NOW BUTTON (.global-book-btn)
+   - Default: light blue gradient
+   - Hover / Focus: golden gradient, black text
+   - Active (pressed): darker gold, white text, pressed transform
+   - Accessible: :focus-visible ring
+   ========================= */
+
+.global-book-btn {
+    display: inline-block;                    /* allows padding and width control */
+    padding: 14px 36px;                       /* comfortable touch target */
+    font-size: 18px;                          /* readable CTA font size */
+    font-weight: 700;                         /* bold for emphasis */
+    text-transform: uppercase;                /* strong CTA look */
+    letter-spacing: 1px;                      /* spacing for premium feel */
+    color: #ffffff;                           /* default text color (on blue) */
+    background: linear-gradient(135deg, #4FC3F7, #0288D1); /* light -> deeper blue gradient */
+    text-decoration: none;                    /* remove underline from anchor */
+    cursor: pointer;                          /* pointer on hover */
+    position: relative;                       /* for pseudo-element glow */
+    overflow: hidden;                         /* hide overflow from pseudo element */
+    transition: all 0.45s ease;               /* smooth transitions */
+    box-shadow: 0 6px 16px rgba(2,136,209,0.25); /* subtle blue shadow */
+    border: none;                             /* ensure no default border */
+    border-radius: 50px;                      /* pill shape */
+}
+
+/* Hover & keyboard-focus state: gold appearance */
+.global-book-btn:hover,
+.global-book-btn:focus {
+    background: linear-gradient(135deg, #FFD700, #FFB300); /* gold gradient */
+    color: #000000;                       /* dark text for readability on gold */
+    transform: translateY(-3px);          /* lift slightly */
+    text-shadow: 0 0 8px rgba(255,215,0,0.7); /* subtle glow */
+    box-shadow: 0 12px 25px rgba(255,215,0,0.25); /* gold-tinted shadow */
+    outline: none;                        /* remove default outline (focus-visible used below) */
+}
+
+/* Pressed (active) state: darker gold to show tactile feedback */
+.global-book-btn:active {
+    background: linear-gradient(135deg, #C99A00, #FFD700); /* darker gold -> gold */
+    color: #ffffff;                            /* white text for contrast */
+    transform: scale(0.97);                    /* pressed shrink */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);   /* smaller shadow */
+}
+
+/* Glow / border pseudo-element (blue when idle; gold on hover) */
+.global-book-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px;
+    width: calc(100% + 4px); height: calc(100% + 4px);
+    border-radius: 50px;
+    background: linear-gradient(45deg, #4FC3F7, #0288D1, #4FC3F7); /* blue aura */
+    z-index: -1;
+    opacity: 0.38;
+    filter: blur(6px);
+    transition: opacity 0.35s ease, background 0.35s ease;
+}
+
+/* Switch aura to golden on hover */
+.global-book-btn:hover::before,
+.global-book-btn:focus::before {
+    opacity: 0.9;
+    background: linear-gradient(45deg, #FFD700, #C99A00, #FFD700); /* golden aura */
+}
+
+/* Visible keyboard focus (accessibility) */
+.global-book-btn:focus-visible {
+    outline: 3px solid rgba(79,195,247,0.28); /* soft blue ring */
+    outline-offset: 4px;
+}
+
+/* Mobile: full-width friendly */
+@media (max-width: 600px) {
+    .global-book-btn {
+        display: block;
+        margin: 20px auto;
+        width: calc(100% - 40px);
+        max-width: 420px;
+        text-align: center;
+    }
+}
+
+/* =========================
+   10. TEAM / FAMILY SECTION
+   (kept as in your original file; documented)
+   ========================= */
+.team { padding: 28px 16px; background: rgba(255,255,255,0.05); margin-top: 20px; }
+.team h2 { margin-bottom: 18px; font-size: 1.7rem; letter-spacing: 0.3px; color: #1a1a1a; text-transform: capitalize; }
+.team-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 1100px; margin: 0 auto; align-items: start; }
+.team-card { position: relative; background: #fff; border-radius: 12px; padding: 18px 16px 24px; text-align: center; box-shadow: 0 10px 28px rgba(0,0,0,0.07); transition: transform .25s ease, box-shadow .25s ease; overflow: hidden; animation: fadeUp .7s ease forwards; }
+.team-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+.team-card img { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; display: inline-block; margin-bottom: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); transition: transform .25s ease; }
+.team-card:hover img { transform: scale(1.04); }
+.team-card h4 { margin: 6px 0 4px; font-size: 1.1rem; color: #0b7b6a; text-transform: capitalize; }
+.team-card p { margin: 0; color: #444; font-size: 0.95rem; line-height: 1.45; }
+
+/* emoji badge and mapping (first four cards) */
+.team-card::before { content: ""; position: absolute; top: 12px; left: 12px; font-size: 26px; width: 42px; height: 42px; display:flex; align-items:center; justify-content:center; border-radius: 10px; background: linear-gradient(135deg, rgba(11,123,106,0.1), rgba(32,201,151,0.04)); color:#0b7b6a; box-shadow: 0 4px 12px rgba(11,123,106,0.06); }
+.team-grid .team-card:nth-child(1)::before { content: "💻"; }
+.team-grid .team-card:nth-child(2)::before { content: "⚡️"; }
+.team-grid .team-card:nth-child(3)::before { content: "🤝"; }
+.team-grid .team-card:nth-child(4)::before { content: "🔧"; }
+
+.team-card h4::after { content: ""; display:block; width:40px; height:3px; margin:8px auto 0; border-radius:2px; background: linear-gradient(90deg,#0b7b6a,#20c997); opacity:0.9; }
+
+@keyframes fadeUp { from{ opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+@media (max-width: 600px) { .team-card { padding-top:22px; } .team-card::before { top:10px; left:10px; width:38px; height:38px; font-size:22px; } .team-card img { width:84px; height:84px;} .team-grid { grid-template-columns: 1fr; } }
+@media (min-width: 700px) { .team-grid { grid-template-columns: repeat(2,1fr); gap:20px; } }
+@media (min-width: 1100px) { .team-grid { grid-template-columns: repeat(4,1fr); gap:26px; } }
+
+/* =========================
+   11. GALLERY
+   ========================= */
+.gallery-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:14px; max-width:1100px; margin:0 auto; }
+.gallery-grid img { width:100%; border-radius:10px; height:200px; object-fit:cover; transition: transform .25s ease, box-shadow .25s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.gallery-grid img:hover { transform:scale(1.03); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+
+/* =========================
+   12. MAP & CTA (small rules)
+   ========================= */
+.map iframe { width:100%; height:400px; border:0; border-radius:10px; }
+.cta .btn { margin-top:12px; }
+
+/* =========================
+   13. UTILITIES
+   ========================= */
+.hidden{ display:none!important; } .text-left{ text-align:left; } .text-center{ text-align:center; }
+
+/* End of stylesheet */
