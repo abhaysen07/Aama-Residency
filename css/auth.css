@@ -1,0 +1,94 @@
+/* Very Simple Purple Login Form */
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+
+    /* simple gradient like your picture */
+    background: linear-gradient(135deg, #6a00ff, #9f5cff);
+}
+
+/* login box */
+.login-box {
+    width: 320px;
+    background: #ffffff15;      /* light transparent box */
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/* title */
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* input fields */
+.input-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-field img {
+    position: absolute;
+    width: 18px;
+    top: 10px;
+    left: 12px;
+    opacity: 0.8;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px 14px;
+    padding-left: 40px;
+    border: none;
+    border-radius: 25px;
+    background: #ffffff30;
+    color: white;
+}
+
+.input-field input::placeholder {
+    color: #f1f1f1;
+}
+
+/* remember + forgot */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.remember-forgot a {
+    color: white;
+    text-decoration: none;
+}
+
+/* login button */
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* register text */
+.register {
+    margin-top: 12px;
+    color: #fff;
+}
+
+.register a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
