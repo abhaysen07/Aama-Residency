@@ -23,7 +23,7 @@ body {
     box-sizing: border-box;                   /* predictable sizing */
     width: 100%;                              /* full width so it can't slide away */
     display: flex;                            /* use flex for nav layout */
-    justify-content: space-between;           /* place items left/right */
+    justify-content: space-around;           /* place items left/right */
     align-items: center;                      /* vertically center */
     background-color: rgb(109, 192, 175);     /* navbar background */
     padding: 0 20px;                          /* horizontal padding; vertical handled by height */
