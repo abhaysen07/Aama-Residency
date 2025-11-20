@@ -1,14 +1,14 @@
 /* ====== Center Page ====== */
 body {
+    text-align: center;
+    background-color: var(--page-bg);
     margin: 0;
+    padding-top: calc(var(--nav-height) + 12px); /* reserve space under fixed nav */
     font-family: Arial, sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    /* You can put ANY background you want */
-    background: linear-gradient(135deg);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
 }
 
 /* ====== Glass Login Box ====== */
