@@ -600,3 +600,34 @@ h3 { font-size: 1.15rem; margin: 8px 0; }
 @media (prefers-reduced-motion: reduce) {
     .login-btn, .input-field input { transition: none; }
 }
+
+/* Fix avatar size */
+.login-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 16px;
+}
+
+/* Fix big heart globe image */
+.login-art {
+    width: 160px;
+    height: auto;
+    display: block;
+    margin: 10px auto 20px;
+}
+
+/* Make input fields full width */
+.input-field input {
+    width: 90%;
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+/* Make the card slightly wider */
+.login-box {
+    width: 380px;   /* increased for clean layout */
+    max-width: 92%;
+}
