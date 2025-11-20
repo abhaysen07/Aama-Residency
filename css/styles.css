@@ -46,24 +46,37 @@ body {
     transition: color 0.3s ease;
 }
 .nav-links a:hover { color: #007bff; }
-/* === FIXED: Login/Register styling === */
+/* 1) Force-right-align the auth block with a 5px right gap */
 .nav-auth {
-    margin-right: 5px; /* from right side */
+  margin-left: auto;    /* pushes auth to the far right */
+  margin-right: 5px;    /* exactly the 5px you asked for */
+  display: flex;
+  align-items: center;
 }
 
-.nav-auth .auth-link {
-    text-decoration: none;     /* removes underline */
-    color: #1b3d34;            /* same color as Home/About/etc */
-    font-weight: 700;
-    font-size: 18px;
-    padding: 6px 10px;
-    border-radius: 6px;
+/* 2) Override ALL anchor states so browser defaults can't win */
+.nav-auth .auth-link,
+.nav-auth .auth-link:link,
+.nav-auth .auth-link:visited,
+.nav-auth .auth-link:hover,
+.nav-auth .auth-link:active,
+.nav-auth .auth-link:focus {
+  color: #1b3d34 !important;        /* same dark-green as other links */
+  text-decoration: none !important; /* remove underline */
+  font-weight: 700;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: transparent;
+  outline: none;
 }
 
-/* Optional hover to match style */
-.nav-auth .auth-link:hover {
-    border-bottom: 2px solid #1b3d34;
+/* small hover effect to match nav style */
+.nav-auth .auth-link:hover,
+.nav-auth .auth-link:focus {
+  border-bottom: 2px solid #1b3d34;
 }
+
 /* =========================
    3. LOGO
    ========================= */
