@@ -46,22 +46,23 @@ body {
     transition: color 0.3s ease;
 }
 .nav-links a:hover { color: #007bff; }
-
-/* === Login/Signup Button (simple, clean) === */
-.nav-auth .auth-link {
-    text-decoration: none;
-    background: white;
-    color: rgb(40, 90, 80);  /* darker green text */
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    transition: 0.2s;
-    border: 1px solid rgba(0,0,0,0.1);
+/* === FIXED: Login/Register styling === */
+.nav-auth {
+    margin-right: 5px; /* from right side */
 }
 
+.nav-auth .auth-link {
+    text-decoration: none;     /* removes underline */
+    color: #1b3d34;            /* same color as Home/About/etc */
+    font-weight: 700;
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/* Optional hover to match style */
 .nav-auth .auth-link:hover {
-    background: #f3f3f3;
-    transform: translateY(-2px);
+    border-bottom: 2px solid #1b3d34;
 }
 /* =========================
    3. LOGO
