@@ -416,7 +416,7 @@ h3 { font-size: 1.15rem; margin: 8px 0; }
 @keyframes fadeUp { from{ opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 
 /* =========================
-   13.LOGIN PAGE SIMPLE CSS
+   13. LOGIN PAGE SIMPLE CSS (UPDATED)
    ====================== */
 
 /* Center login box */
@@ -426,58 +426,89 @@ h3 { font-size: 1.15rem; margin: 8px 0; }
     align-items: center;
     min-height: calc(100vh - var(--nav-height) - 20px);
     padding: 20px 0;
+    box-sizing: border-box;
 }
 
 /* Glass Login Card */
 .login-box {
     width: 360px;
-    padding: 35px 30px;
+    max-width: 92%;
+    padding: 32px 26px;
     border-radius: 18px;
 
     /* subtle transparent glass */
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.88); /* slightly solid so form controls are readable */
+    /* If you prefer a frosted look, switch to rgba(255,255,255,0.4) and enable backdrop-filter */
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.08);
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 
     text-align: center;
+    margin: 0 auto;
 }
 
 /* Title */
 .login-box h2 {
     font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 22px;
-    color: #111;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--text-dark, #111);
+}
+
+/* Optional centered avatar above inputs (small, not huge) */
+.login-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 6px auto 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 /* Input Group */
 .input-field {
     position: relative;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
+/* Input styling: full-width rounded pills */
 .input-field input {
     width: 100%;
     padding: 12px 14px;
-    padding-left: 42px;
-
+    padding-left: 46px;               /* space for icon */
     border-radius: 25px;
-    border: 1px solid rgba(0,0,0,0.25);
-    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(0,0,0,0.12);
+    background: #ffffff;              /* readable on light card */
     font-size: 15px;
     outline: none;
     color: #111;
+    box-sizing: border-box;
 }
 
-.input-field img {
+/* placeholder color */
+.input-field input::placeholder {
+    color: rgba(0,0,0,0.45);
+}
+
+/* icon inside input — use <img class="input-icon"> or <i class="input-icon"> */
+.input-field .input-icon {
     position: absolute;
-    top: 10px;
-    left: 14px;
-    width: 18px;
-    opacity: 0.9;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+/* focus state for inputs (accessibility & clarity) */
+.input-field input:focus {
+    border-color: rgba(11,123,106,0.9); /* accent color */
+    box-shadow: 0 6px 18px rgba(11,123,106,0.08);
 }
 
 /* Remember + Forgot Row */
@@ -485,13 +516,31 @@ h3 { font-size: 1.15rem; margin: 8px 0; }
     display: flex;
     justify-content: space-between;
     font-size: 13px;
-    margin-bottom: 18px;
-    color: #111;
+    margin: 12px 4px 18px;
+    color: var(--text-dark, #111);
+    align-items: center;
 }
 
+.remember-forgot label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dark, #111);
+}
+
+.remember-forgot input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+}
+
+/* link styles */
 .remember-forgot a {
     text-decoration: none;
-    color: #007bff;
+    color: var(--accent-blue, #007bff);
+}
+.remember-forgot a:hover,
+.remember-forgot a:focus {
+    text-decoration: underline;
 }
 
 /* Login Button */
@@ -500,22 +549,54 @@ h3 { font-size: 1.15rem; margin: 8px 0; }
     padding: 11px;
     border-radius: 25px;
     border: none;
-    background: #007bff;
+    background: var(--accent-blue, #007bff);
     color: #fff;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: 0 6px 16px rgba(2,136,209,0.12);
+    transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
+.login-btn:hover { transform: translateY(-2px); }
+.login-btn:active { transform: translateY(0); }
+.login-btn:focus { outline: 3px solid rgba(79,195,247,0.18); outline-offset: 3px; }
 
 /* Register Link */
 .register {
     margin-top: 14px;
     font-size: 14px;
-    color: #111;
+    color: var(--text-dark, #111);
 }
 
 .register a {
-    color: #007bff;
-    font-weight: bold;
+    color: var(--accent-blue, #007bff);
+    font-weight: 700;
     text-decoration: none;
 }
+.register a:hover,
+.register a:focus { text-decoration: underline; }
 
+/* small helper text alignment on very narrow screens */
+.login-box .small-note {
+    font-size: 13px;
+    color: rgba(0,0,0,0.6);
+    margin-top: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .login-box {
+        width: calc(100% - 32px);
+        padding: 20px;
+        border-radius: 14px;
+    }
+    .login-box h2 { font-size: 22px; margin-bottom: 14px; }
+    .login-avatar { width: 96px; height: 96px; margin-bottom: 12px; }
+    .input-field input { padding-left: 42px; font-size: 14px; }
+    .remember-forgot { font-size: 12px; gap: 8px; }
+    .login-btn { padding: 10px; font-size: 15px; }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .login-btn, .input-field input { transition: none; }
+}
