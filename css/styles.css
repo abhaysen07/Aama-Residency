@@ -11,7 +11,8 @@
 body {
     text-align: center;                       /* default center alignment for headings/layout */
     background-color: #c4ab7b;                /* warm cream page background color */
-    margin: 0;                                /* remove default browser margin */
+    margin: 0;
+    padding-top: 82px;                            /* remove default browser margin */
     font-family: Arial, sans-serif;           /* primary font family */
 }
 
@@ -19,27 +20,34 @@ body {
    2. NAVBAR / HEADER
    ========================= */
 .navbar {
+    box-sizing: border-box;                   /* predictable sizing */
+    width: 100%;                              /* full width so it can't slide away */
     display: flex;                            /* use flex for nav layout */
-    justify-content: space-between;           /* space-between to place items left/right */
+    justify-content: space-between;           /* place items left/right */
     align-items: center;                      /* vertically center */
     background-color: rgb(109, 192, 175);     /* navbar background */
-    padding: 0 20px;                          /* horizontal padding (vertical handled by height) */
-    height: 70px;                             /* fixed height for the bar */
+    padding: 0 20px;                          /* horizontal padding; vertical handled by height */
+    height: 70px;                             /* fixed height for consistent layout */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);    /* subtle shadow */
     position: fixed;                          /* fixed to viewport so it always sticks */
     top: 0;
     left: 0;
     right: 0;
-    z-index: 9999;                            /* keep it above other content */
+    z-index: 2147483647;                      /* max z-index to outrank anything (safe integer) */
     backdrop-filter: blur(45px);              /* glassmorphism effect */
     -webkit-backdrop-filter: blur(45px);
+    transform: translateZ(0);                 /* create its own layer to avoid parent transform issues */
+    backface-visibility: hidden;
+    contain: paint layout;                    /* isolate paint/layout to reduce interference */
+    will-change: transform, top;              /* hint for smoother updates during scroll */
 }
 
+/* keep nav links centered vertically and stable */
 .nav-links {
     display: flex;
     gap: 25px;
     list-style: none;
-    margin: 0;                                /* avoid auto-centering — works better with fixed nav */
+    margin: 0;                                /* remove auto-centering (caused issues earlier) */
     padding: 0;
     align-items: center;
 }
@@ -53,6 +61,16 @@ body {
 
 .nav-links a:hover {
     color: #007bff;
+}
+.auth-link {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff !important;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.auth-link:hover {
+    background-color: #0056b3;
 }
 /* =========================
    3. LOGO
