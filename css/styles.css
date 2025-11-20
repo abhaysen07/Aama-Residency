@@ -1,239 +1,309 @@
 /* ============================================================
-   AAMA RESIDENCY WEBSITE STYLESHEET — fully documented
-   Author: Abhishek Kumar
-   Date Updated: 14 October 2025
-   Purpose: Full site styles + unified global .global-book-btn
+   AAMA RESIDENCY — Responsive & Robust Stylesheet (Optimized)
+   Author: Abhishek Kumar (updated)
+   Date Updated: 20 Nov 2025
+   Notes: Full responsive behavior, fixed navbar, accessible CTAs
+   Uploaded image reference: /mnt/data/c9219bcb-0320-40a6-898a-86532d752f53.png
    ============================================================ */
 
 /* =========================
-   1. GLOBAL BODY SETTINGS
+   0. GLOBAL: BOX-SIZING + VARIABLES
    ========================= */
-body {
-    text-align: center;                       /* default center alignment for headings/layout */
-    background-color: #c4ab7b;                /* warm cream page background color */
-    margin: 0;
-    padding-top: 82px;                            /* remove default browser margin */
-    font-family: Arial, sans-serif;           /* primary font family */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --nav-height: 70px;
+    --page-bg: #c4ab7b;           /* warm cream */
+    --nav-bg: rgb(109, 192, 175);
+    --accent-blue: #0288D1;
+    --accent-light: #4FC3F7;
+    --gold-1: #FFD700;
+    --gold-2: #FFB300;
+    --text-dark: #2b2b2b;
+    --max-width: 1200px;
+    --container-pad: 16px;
+    --radius: 12px;
+    --transition-fast: 0.18s;
 }
 
 /* =========================
-   2. NAVBAR / HEADER
+   1. GLOBAL BODY & BASE
    ========================= */
+html, body {
+    height: 100%;
+}
+
+body {
+    text-align: center;
+    background-color: var(--page-bg);
+    margin: 0;
+    padding-top: calc(var(--nav-height) + 12px); /* reserve space under fixed nav */
+    font-family: Arial, sans-serif;
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+}
+
+/* Global container utility (use for page areas) */
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+}
+
+/* =========================
+   2. NAVBAR / HEADER (fixed, accessible)
+   ========================= */
+header { position: relative; z-index: 10000; }
+
 .navbar {
-    box-sizing: border-box;                   /* predictable sizing */
-    width: 100%;                              /* full width so it can't slide away */
-    display: flex;                            /* use flex for nav layout */
-    justify-content: space-around;           /* place items left/right */
-    align-items: center;                      /* vertically center */
-    background-color: rgb(109, 192, 175);     /* navbar background */
-    padding: 0 20px;                          /* horizontal padding; vertical handled by height */
-    height: 70px;                             /* fixed height for consistent layout */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);    /* subtle shadow */
-    position: fixed;                          /* fixed to viewport so it always sticks */
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--nav-bg);
+    padding: 0 20px;
+    height: var(--nav-height);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    position: fixed; /* fixed to viewport */
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2147483647;                      /* max z-index to outrank anything (safe integer) */
-    backdrop-filter: blur(45px);              /* glassmorphism effect */
-    -webkit-backdrop-filter: blur(45px);
-    transform: translateZ(0);                 /* create its own layer to avoid parent transform issues */
-    backface-visibility: hidden;
-    contain: paint layout;                    /* isolate paint/layout to reduce interference */
-    will-change: transform, top;              /* hint for smoother updates during scroll */
+    z-index: 2147483647;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transform: translateZ(0);
+    will-change: transform, top;
+    transition: background 220ms ease, height 220ms ease;
 }
 
-/* keep nav links centered vertically and stable */
+/* Logo or brand area inside header (left side) */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Simple responsive navigation links */
 .nav-links {
     display: flex;
-    gap: 25px;
+    gap: 22px;
     list-style: none;
-    margin: 0;                                /* remove auto-centering (caused issues earlier) */
+    margin: 0;
     padding: 0;
     align-items: center;
 }
+
+/* Link styles */
 .nav-links a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s ease;
+    color: #0f3330;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: background var(--transition-fast) ease, color var(--transition-fast) ease;
 }
 
+/* active / hover */
+.nav-links a.active,
+.nav-links a:focus,
 .nav-links a:hover {
-    color: #007bff;
+    background: rgba(255,255,255,0.12);
+    color: #02363a;
+    outline: none;
 }
+
+/* auth button */
 .auth-link {
-    padding: 8px 16px;
-    background-color: #007bff;
+    padding: 8px 14px;
+    background-color: var(--accent-blue);
     color: #fff !important;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 180ms ease, transform 120ms ease;
 }
-.auth-link:hover {
-    background-color: #0056b3;
-}
-/* =========================
-   3. LOGO
-   ========================= */
-.logo-container { 
-    text-align: center; 
-    margin-top: 80px; /* keeps navbar free and clean */
-    padding: 10px; 
+.auth-link:hover,
+.auth-link:focus {
+    background-color: #006bb3;
+    transform: translateY(-2px);
 }
 
-.hotel-logo {
-    width: 250px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.hotel-logo:hover { 
-    transform: scale(1.05); 
-}
-/* =========================
-   4. DATE/TIME DISPLAY
-   ========================= */
+/* Small visual tweak for datetime if used */
 #datetime {
-    font-size: 14px; font-weight: 500; color: #083;
-    white-space: nowrap; margin-right: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #083;
+    white-space: nowrap;
+    margin-right: 12px;
 }
 @media (max-width: 780px) { #datetime { display: none; } }
 
 /* =========================
-   5. MAIN / ABOUT SECTIONS
+   3. LOGO & HERO
    ========================= */
-main { padding: 20px; max-width: 1200px; margin: auto; text-align: center; }
-.about { text-align: center; margin: 10px; }
+.logo-container {
+    text-align: center;
+    margin: 16px 0; /* small breathing room under the fixed nav */
+    padding: 12px 0;
+}
+
+.hotel-logo {
+    width: 240px;
+    max-width: 62vw;       /* keeps logo responsive on narrow screens */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: inline-block;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.hotel-logo:hover {
+    transform: scale(1.04);
+}
 
 /* =========================
-   6. ROOMS & SERVICES
+   4. MAIN / ABOUT / CONTENT
    ========================= */
-.rooms-services { text-align: center; padding: 28px 16px; margin: 10px auto; max-width: 1100px; }
-
-.room-card {
-    background: rgba(255,255,255,0.08);
-    border-radius: 14px; padding: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    margin: 18px auto; transition: transform .18s ease, box-shadow .18s ease;
+main {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 18px var(--container-pad) 48px;
+    text-align: center;
 }
-.room-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,0.16); }
 
-.room-card-header h3 { margin: 0; font-size: 1.35rem; letter-spacing: 0.2px; }
-.room-card-header .subtle { margin: 6px 0 12px; font-size: 0.95rem; color: rgba(0,0,0,0.6); }
+/* Example hero text */
+.hero-title {
+    font-size: 1.7rem;
+    margin: 6px 0 6px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+.hero-sub {
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.75);
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+/* =========================
+   5. ROOMS & SERVICES (responsive grid)
+   ========================= */
+.rooms-services {
+    text-align: center;
+    padding: 28px 16px;
+    margin: 12px auto;
+    max-width: 1100px;
+}
 
 .room-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    align-items: stretch;
     margin: 10px 0 18px;
 }
 
-.room-type {
-    background: #fff; border-radius: 10px; padding: 14px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.08); text-align: left;
+.room-card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.10);
     transition: transform .18s ease, box-shadow .18s ease;
-    min-height: 160px; display: flex; flex-direction: column; justify-content: space-between;
 }
-.room-type:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+.room-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
 
-.room-type h4 { margin: 0 0 8px; font-size: 1.05rem; color: #2b2b2b; }
-.room-desc { margin: 0 0 12px; line-height: 1.35; color: #333; font-size: 0.95rem; }
-.room-meta { margin: 0; font-size: 0.88rem; color: #006644; font-weight: 600; }
-
-.services-brief { margin-top: 12px; text-align: left; padding: 10px 8px; border-top: 1px dashed rgba(0,0,0,0.06); }
-.services-brief h4 { margin: 8px 0; font-size: 1rem; }
-.services-brief ul { margin: 6px 0 0; padding-left: 20px; }
-.final-note { margin-top: 12px; font-weight: 600; }
-
-/* =========================
-   7. FOOTER
-   ========================= */
-footer { background-color: brown; text-align: center; padding: 10px 0; color: #fff; font-weight: 500; }
-
-/* =========================
-   8. RESPONSIVE BREAKPOINTS
-   ========================= */
-@media (max-width: 900px) { .room-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .room-grid { grid-template-columns: 1fr; } .room-card { padding: 16px; } .room-type { min-height: auto; } }
+.room-type {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    text-align: left;
+    transition: transform .18s ease, box-shadow .18s ease;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 /* =========================
-   9. GLOBAL BOOK NOW BUTTON (.global-book-btn)
-   - Default: light blue gradient
-   - Hover / Focus: golden gradient, black text
-   - Active (pressed): darker gold, white text, pressed transform
-   - Accessible: :focus-visible ring
+   6. CTA BUTTON (global-book-btn)
    ========================= */
-
 .global-book-btn {
-    display: inline-block;                    /* allows padding and width control */
-    padding: 14px 36px;                       /* comfortable touch target */
-    font-size: 18px;                          /* readable CTA font size */
-    font-weight: 700;                         /* bold for emphasis */
-    text-transform: uppercase;                /* strong CTA look */
-    letter-spacing: 1px;                      /* spacing for premium feel */
-    color: #ffffff;                           /* default text color (on blue) */
-    background: linear-gradient(135deg, #4FC3F7, #0288D1); /* light -> deeper blue gradient */
-    text-decoration: none;                    /* remove underline from anchor */
-    cursor: pointer;                          /* pointer on hover */
-    position: relative;                       /* for pseudo-element glow */
-    overflow: hidden;                         /* hide overflow from pseudo element */
-    transition: all 0.45s ease;               /* smooth transitions */
-    box-shadow: 0 6px 16px rgba(2,136,209,0.25); /* subtle blue shadow */
-    border: none;                             /* ensure no default border */
-    border-radius: 50px;                      /* pill shape */
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-blue));
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.45s ease;
+    box-shadow: 0 6px 16px rgba(2,136,209,0.22);
+    border: none;
+    border-radius: 50px;
 }
 
-/* Hover & keyboard-focus state: gold appearance */
 .global-book-btn:hover,
 .global-book-btn:focus {
-    background: linear-gradient(135deg, #FFD700, #FFB300); /* gold gradient */
-    color: #000000;                       /* dark text for readability on gold */
-    transform: translateY(-3px);          /* lift slightly */
-    text-shadow: 0 0 8px rgba(255,215,0,0.7); /* subtle glow */
-    box-shadow: 0 12px 25px rgba(255,215,0,0.25); /* gold-tinted shadow */
-    outline: none;                        /* remove default outline (focus-visible used below) */
+    background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+    color: #000;
+    transform: translateY(-3px);
+    text-shadow: 0 0 8px rgba(255,215,0,0.6);
+    box-shadow: 0 12px 25px rgba(255,215,0,0.18);
 }
 
-/* Pressed (active) state: darker gold to show tactile feedback */
 .global-book-btn:active {
-    background: linear-gradient(135deg, #C99A00, #FFD700); /* darker gold -> gold */
-    color: #ffffff;                            /* white text for contrast */
-    transform: scale(0.97);                    /* pressed shrink */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.35);   /* smaller shadow */
+    background: linear-gradient(135deg, #C99A00, #FFD700);
+    color: #fff;
+    transform: scale(0.98);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.28);
 }
 
-/* Glow / border pseudo-element (blue when idle; gold on hover) */
 .global-book-btn::before {
     content: '';
     position: absolute;
     top: -2px; left: -2px;
     width: calc(100% + 4px); height: calc(100% + 4px);
     border-radius: 50px;
-    background: linear-gradient(45deg, #4FC3F7, #0288D1, #4FC3F7); /* blue aura */
+    background: linear-gradient(45deg, var(--accent-light), var(--accent-blue), var(--accent-light));
     z-index: -1;
-    opacity: 0.38;
+    opacity: 0.36;
     filter: blur(6px);
     transition: opacity 0.35s ease, background 0.35s ease;
 }
 
-/* Switch aura to golden on hover */
 .global-book-btn:hover::before,
 .global-book-btn:focus::before {
     opacity: 0.9;
-    background: linear-gradient(45deg, #FFD700, #C99A00, #FFD700); /* golden aura */
+    background: linear-gradient(45deg, var(--gold-1), #C99A00, var(--gold-1));
 }
 
-/* Visible keyboard focus (accessibility) */
 .global-book-btn:focus-visible {
-    outline: 3px solid rgba(79,195,247,0.28); /* soft blue ring */
+    outline: 3px solid rgba(79,195,247,0.28);
     outline-offset: 4px;
 }
 
-/* Mobile: full-width friendly */
+/* Mobile-friendly full width CTA */
 @media (max-width: 600px) {
     .global-book-btn {
         display: block;
-        margin: 20px auto;
+        margin: 18px auto;
         width: calc(100% - 40px);
         max-width: 420px;
         text-align: center;
@@ -241,50 +311,111 @@ footer { background-color: brown; text-align: center; padding: 10px 0; color: #f
 }
 
 /* =========================
-   10. TEAM / FAMILY SECTION
-   (kept as in your original file; documented)
+   7. TEAM / CARDS / GALLERY
    ========================= */
-.team { padding: 28px 16px; background: rgba(255,255,255,0.05); margin-top: 20px; }
-.team h2 { margin-bottom: 18px; font-size: 1.7rem; letter-spacing: 0.3px; color: #1a1a1a; text-transform: capitalize; }
-.team-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 1100px; margin: 0 auto; align-items: start; }
+.team {
+    padding: 28px 16px;
+    background: rgba(255,255,255,0.04);
+    margin-top: 20px;
+}
+.team h2 { margin-bottom: 18px; font-size: 1.7rem; color: var(--text-dark); text-transform: capitalize; }
+.team-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 1100px; margin: 0 auto; }
 .team-card { position: relative; background: #fff; border-radius: 12px; padding: 18px 16px 24px; text-align: center; box-shadow: 0 10px 28px rgba(0,0,0,0.07); transition: transform .25s ease, box-shadow .25s ease; overflow: hidden; animation: fadeUp .7s ease forwards; }
-.team-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
 .team-card img { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; display: inline-block; margin-bottom: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); transition: transform .25s ease; }
-.team-card:hover img { transform: scale(1.04); }
-.team-card h4 { margin: 6px 0 4px; font-size: 1.1rem; color: #0b7b6a; text-transform: capitalize; }
-.team-card p { margin: 0; color: #444; font-size: 0.95rem; line-height: 1.45; }
 
-/* emoji badge and mapping (first four cards) */
-.team-card::before { content: ""; position: absolute; top: 12px; left: 12px; font-size: 26px; width: 42px; height: 42px; display:flex; align-items:center; justify-content:center; border-radius: 10px; background: linear-gradient(135deg, rgba(11,123,106,0.1), rgba(32,201,151,0.04)); color:#0b7b6a; box-shadow: 0 4px 12px rgba(11,123,106,0.06); }
-.team-grid .team-card:nth-child(1)::before { content: "💻"; }
-.team-grid .team-card:nth-child(2)::before { content: "⚡️"; }
-.team-grid .team-card:nth-child(3)::before { content: "🤝"; }
-.team-grid .team-card:nth-child(4)::before { content: "🔧"; }
-
-.team-card h4::after { content: ""; display:block; width:40px; height:3px; margin:8px auto 0; border-radius:2px; background: linear-gradient(90deg,#0b7b6a,#20c997); opacity:0.9; }
-
-@keyframes fadeUp { from{ opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-
-@media (max-width: 600px) { .team-card { padding-top:22px; } .team-card::before { top:10px; left:10px; width:38px; height:38px; font-size:22px; } .team-card img { width:84px; height:84px;} .team-grid { grid-template-columns: 1fr; } }
-@media (min-width: 700px) { .team-grid { grid-template-columns: repeat(2,1fr); gap:20px; } }
-@media (min-width: 1100px) { .team-grid { grid-template-columns: repeat(4,1fr); gap:26px; } }
-
-/* =========================
-   11. GALLERY
-   ========================= */
+/* gallery */
 .gallery-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:14px; max-width:1100px; margin:0 auto; }
 .gallery-grid img { width:100%; border-radius:10px; height:200px; object-fit:cover; transition: transform .25s ease, box-shadow .25s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.gallery-grid img:hover { transform:scale(1.03); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
 
 /* =========================
-   12. MAP & CTA (small rules)
+   8. MAP & CTA
    ========================= */
 .map iframe { width:100%; height:400px; border:0; border-radius:10px; }
-.cta .btn { margin-top:12px; }
 
 /* =========================
-   13. UTILITIES
+   9. UTILITIES + ACCESSIBILITY
    ========================= */
-.hidden{ display:none!important; } .text-left{ text-align:left; } .text-center{ text-align:center; }
+.hidden{ display:none!important; }
+.text-left{ text-align:left; }
+.text-center{ text-align:center; }
+.small { font-size: 0.88rem; color: rgba(0,0,0,0.7); }
 
-/* End of stylesheet */
+/* keyboard focus visible */
+a:focus { outline: none; }
+a:focus-visible { outline: 3px solid rgba(79,195,247,0.28); outline-offset: 3px; border-radius: 6px; }
+
+/* =========================
+   10. TYPOGRAPHY SIZING (responsive)
+   ========================= */
+h1 { font-size: 2.1rem; margin: 18px 0 8px; }
+h2 { font-size: 1.6rem; margin: 12px 0; }
+h3 { font-size: 1.15rem; margin: 8px 0; }
+
+/* =========================
+   11. RESPONSIVE BREAKPOINTS
+   ========================= */
+
+/* Medium screens */
+@media (max-width: 1100px) {
+    :root { --max-width: 980px; }
+    .room-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablet / small laptop */
+@media (max-width: 900px) {
+    :root { --max-width: 860px; }
+    .room-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    :root { --nav-height: 62px; }
+
+    .navbar {
+        padding: 0 10px;
+        height: var(--nav-height);
+    }
+
+    /* collapse nav spacing & reduce font */
+    .nav-links {
+        gap: 12px;
+        font-size: 14px;
+    }
+
+    /* container adjustments */
+    .container, main { padding: 0 12px; }
+
+    /* single column room grid */
+    .room-grid { grid-template-columns: 1fr; }
+
+    /* logo smaller on mobile */
+    .hotel-logo {
+        width: 180px;
+        max-width: 54vw;
+    }
+
+    /* smaller headings */
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.35rem; }
+
+    /* team grid single col */
+    .team-grid { grid-template-columns: 1fr; }
+}
+
+/* Large desktops */
+@media (min-width: 1400px) {
+    :root { --max-width: 1400px; }
+    .room-grid { gap: 20px; }
+}
+
+/* =========================
+   12. Animations
+   ========================= */
+@keyframes fadeUp { from{ opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+/* =========================
+   13. END
+   ========================= */
+
