@@ -45,8 +45,8 @@ body {
     font-size: 16px;
     transition: color 0.3s ease;
 }
-.nav -links a:hover {
-    color: rgb(0, 102, 68);   /* green hover */
+.nav-links a:hover {
+    color: rgb(24, 97, 140);   /* blue hover */
 }
 
 /* Make Login/Signup align right */
@@ -67,7 +67,7 @@ body {
 
 /* Hover effect EXACTLY same as nav-links a */
 .nav-auth .auth-link:hover hover {
-    color: rgb(0, 102, 68);   /* green hover */
+    color: rgb(24, 97, 140);   /* blue hover */
 }
 
 /* =========================
