@@ -19,57 +19,60 @@ body {
    2. NAVBAR / HEADER
    ========================= */
 .navbar {
+
     display: flex;                            /* use flex for nav layout */
+
     justify-content: space-between;           /* space-between to place items left/right */
+
     align-items: center;                      /* vertically center */
+
     background-color: rgb(109, 192, 175);     /* navbar background */
+
     padding: 15px 0;                          /* vertical padding */
+
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);    /* subtle shadow */
+
     position: sticky;                         /* sticks to top when scrolling */
+
     top: 0;
+
     z-index: 1000;                            /* sit above other content */
+
 }
+
+
 
 .nav-links {
+
     display: flex;
+
     gap: 25px;
+
     list-style: none;
+
     margin: 0 auto;
+
     padding: 0;
+
 }
+
+
 
 .nav-links a {
+
     text-decoration: none;
+
     color: #333;
+
     font-weight: bold;
+
     font-size: 16px;
+
     transition: color 0.3s ease;
-}
-.nav-links a:hover {
-    color: rgb(24, 97, 140);   /* blue hover */
+
 }
 
-/* Make Login/Signup align right */
-.nav-auth {
-    margin-left: auto;
-    margin-right: 20px;  /* adjust spacing if you want */
-}
-
-/* Make Login/Signup identical to nav-links a */
-.nav-auth .auth-link {
-    text-decoration: none;
-    color: #333;              /* same as nav-links a */
-    font-weight: bold;        /* same */
-    font-size: 16px;          /* same */
-    padding: 6px 10px;        /* matches spacing */
-    transition: color 0.3s ease; /* same hover smoothness */
-}
-
-/* Hover effect EXACTLY same as nav-links a */
-.nav-auth .auth-link:hover hover {
-    color: rgb(24, 97, 140);   /* blue hover */
-}
-
+.nav-links a:hover { color: #007bff; }
 /* =========================
    3. LOGO
    ========================= */
