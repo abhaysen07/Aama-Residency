@@ -47,6 +47,22 @@ body {
 }
 .nav-links a:hover { color: #007bff; }
 
+/* === Login/Signup Button (simple, clean) === */
+.nav-auth .auth-link {
+    text-decoration: none;
+    background: white;
+    color: rgb(40, 90, 80);  /* darker green text */
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: 0.2s;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.nav-auth .auth-link:hover {
+    background: #f3f3f3;
+    transform: translateY(-2px);
+}
 /* =========================
    3. LOGO
    ========================= */
