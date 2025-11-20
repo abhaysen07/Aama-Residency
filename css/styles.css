@@ -65,7 +65,7 @@ body {
 
 /* Hover effect EXACTLY same as nav-links a */
 .nav-auth .auth-link:hover {
-    color: #007bff;   /* blue hover (same as Home, About, etc.) */
+    color: rgb(109, 192, 175);   /* blue hover (same as Home, About, etc.) */
 }
 
 /* =========================
