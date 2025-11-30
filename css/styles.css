@@ -141,7 +141,16 @@ body {
   .nav-links { gap: 12px; }
   .auth-btn { padding: 7px 10px; }
 }
-
+/* =========================
+   3. LOGO / HEADER IMAGE
+   ========================= */
+.hotel-logo {
+    width: 220px;
+    max-width: 64vw;
+    margin: 0 auto 12px;
+    display: block;
+    align-items: center;
+}
 
 /* =========================
    4. MAIN / ABOUT / CONTENT
