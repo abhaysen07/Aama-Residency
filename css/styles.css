@@ -146,7 +146,7 @@ body {
    ========================= */
 /* space under fixed navbar so logo isn't hidden */
 .logo-container {
-  max-width: 900px;        /* max area the logo can occupy */
+  max-width: 400px;        /* max area the logo can occupy */
   width: 100%;
   margin: 80px auto 20px;  /* top margin = navbar height + extra space */
   padding: 12px;
