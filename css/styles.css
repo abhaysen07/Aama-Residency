@@ -147,6 +147,7 @@ body {
 .hotel-logo {
     width: 220px;
     max-width: 64vw;
+    height: auto;
     margin: 0 auto 12px;
     display: block;
     align-items: center;
