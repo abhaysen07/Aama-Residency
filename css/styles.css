@@ -68,8 +68,8 @@ body {
 }
 
 :root {
-  --nav-bg: #78C7B1;
-  --accent: #007bff;
+  --nav-bg: #78C7B1;   /* Your theme green */
+  --accent: #007bff;   /* Login button blue */
 }
 
 /* Navbar */
@@ -85,38 +85,46 @@ body {
   justify-content: space-between;
   padding: 0 24px;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
 }
 
-/* Brand */
-.brand {
-  font-size: 18px;
-  font-weight: 700;
-  color: #04332F;
-}
-
-/* Nav Links */
+/* Nav Links Container */
 .nav-links {
   display: flex;
   gap: 22px;
   list-style: none;
 }
 
+/* Individual Links */
 .nav-item {
   text-decoration: none;
   font-weight: 600;
   color: #0f3330;
-  padding: 6px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
-  transition: background 0.2s;
+  transition: 
+      background 0.2s ease,
+      box-shadow 0.25s ease,
+      transform 0.2s ease,
+      color 0.2s ease;
 }
 
-/* Hover only — no forced highlight */
+/* Hover Glow */
 .nav-item:hover {
-  background: rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.3);
+  color: #02363a;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
 }
 
-/* Login/Signup Button */
+/* Active Tab Glow */
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.45);
+  color: #02363a;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+/* Login Button */
 .auth-btn {
   background: var(--accent);
   color: #fff;
@@ -124,47 +132,22 @@ body {
   border-radius: 6px;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.2s;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .auth-btn:hover {
   background: #0063cc;
+  transform: translateY(-2px);
 }
 
-
-/* Small visual tweak for datetime if used */
-#datetime {
-    font-size: 14px;
-    font-weight: 500;
-    color: #083;
-    white-space: nowrap;
-    margin-right: 12px;
-}
-@media (max-width: 780px) { #datetime { display: none; } }
-
-/* =========================
-   3. LOGO & HERO
-   ========================= */
-.logo-container {
-    text-align: center;
-    margin: 16px 0; /* small breathing room under the fixed nav */
-    padding: 12px 0;
-}
-
-.hotel-logo {
-    width: 240px;
-    max-width: 62vw;       /* keeps logo responsive on narrow screens */
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    display: inline-block;
-    transform-origin: center;
-    will-change: transform;
-}
-
-.hotel-logo:hover {
-    transform: scale(1.04);
+/* Optional: Responsive Hide/Login Move */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 14px;
+  }
+  .auth-btn {
+    padding: 7px 10px;
+  }
 }
 
 /* =========================
