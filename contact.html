@@ -31,30 +31,22 @@
   <!-- ============================================================
        HEADER SECTION — Includes Navbar and Logo
        ============================================================ -->
-  <header>
-    <nav class="navbar">
-      <!-- ====== NAVIGATION LINKS ====== -->
-      <ul class="nav-links">
-        <!-- Change link text or order only here -->
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="room.html">Rooms</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li> <!-- Highlight current page -->
-      </ul>
-
-      <!-- ====== LIVE DATE/TIME DISPLAY ======
-           This span is updated dynamically by script.js every second.
-           Do not remove the 'id="datetime"' attribute or script will fail. -->
-      <span id="datetime" aria-live="polite" title="Current date and time">Loading...</span>
-    </nav>
-
-    <!-- ====== LOGO BELOW NAVBAR ====== -->
-    <div class="logo-container">
-      <!-- Replace image path if logo file name changes -->
-      <img src="images/logo.png" alt="Aama Residency Logo" class="hotel-logo">
-    </div>
-  </header>
+  <!-- ====== HEADER SECTION ====== -->
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item active">Home</a></li>
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="room.html" class="nav-item">Rooms</a></li>
+                <li><a href="services.html" class="nav-item">Services</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <!-- note: auth-btn also has nav-item so it uses same glow/active style -->
+                <a href="authentication.html" class="auth-btn nav-item">Log In/Signup</a>
+            </div>
+        </nav>
+    </header>
 
   <!-- ============================================================
        MAIN CONTENT SECTION

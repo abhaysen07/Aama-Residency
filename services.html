@@ -8,24 +8,22 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="room.html">Rooms</a></li>
-        <li><a href="services.html" class="active">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-
-      <!-- Dynamic date & time (matches other pages) -->
-      <span id="datetime" aria-live="polite" title="Current date and time">Loading...</span>
-    </nav>
-
-    <div class="logo-container">
-      <img src="images/logo.png" alt="Aama Residency Logo" class="hotel-logo">
-    </div>
-  </header>
+  <!-- ====== HEADER SECTION ====== -->
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item active">Home</a></li>
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="room.html" class="nav-item">Rooms</a></li>
+                <li><a href="services.html" class="nav-item">Services</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <!-- note: auth-btn also has nav-item so it uses same glow/active style -->
+                <a href="authentication.html" class="auth-btn nav-item">Log In/Signup</a>
+            </div>
+        </nav>
+    </header>
 
   <main>
     <!-- Hero -->
