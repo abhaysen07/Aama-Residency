@@ -144,14 +144,50 @@ body {
 /* =========================
    3. LOGO / HEADER IMAGE
    ========================= */
-.hotel-logo {
-    width: 220px;
-    max-width: 64vw;
-    height: 350px;
-    margin: 0 auto 12px;
-    display: block;
-    align-items: center;
+/* space under fixed navbar so logo isn't hidden */
+.logo-container {
+  max-width: 900px;        /* max area the logo can occupy */
+  width: 100%;
+  margin: 80px auto 20px;  /* top margin = navbar height + extra space */
+  padding: 12px;
+  text-align: center;
+  overflow: visible;       /* allow hover lift outside the box */
+  pointer-events: auto;
 }
+
+/* logo image — fixed sensible default + fully responsive */
+.hotel-logo {
+  width: 320px;            /* desired default width on desktop */
+  max-width: 70vw;         /* shrink on narrow screens */
+  height: auto;            /* keep aspect ratio */
+  display: inline-block;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: transform 280ms cubic-bezier(.2,.9,.2,1), 
+              box-shadow 280ms cubic-bezier(.2,.9,.2,1);
+  transform-origin: center;
+  will-change: transform, box-shadow;
+}
+
+/* subtle hover lift that “comes out of the page” */
+.hotel-logo:hover,
+.hotel-logo:focus {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  z-index: 20; /* lift above nearby elements */
+}
+
+/* smaller devices */
+@media (max-width: 900px) {
+  .hotel-logo { width: 260px; max-width: 72vw; }
+  .logo-container { margin-top: 72px; }
+}
+
+@media (max-width: 480px) {
+  .hotel-logo { width: 180px; max-width: 80vw; border-radius: 12px; }
+  .logo-container { margin-top: 64px; padding: 8px; }
+}
+
 
 /* =========================
    4. MAIN / ABOUT / CONTENT
